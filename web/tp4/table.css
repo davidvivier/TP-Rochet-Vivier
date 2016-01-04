@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Feuille de styles pour formater le tableau d'affichage des utilisateurs.
+
+    Created on : Dec 14, 2015, 11:23:02 AM
+    Author     : dave
+*/
+
+
+table {
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+}
+
+tr, td, th {
+    border: 2px solid;
+    padding: 4px;
+}
