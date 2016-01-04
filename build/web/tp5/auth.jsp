@@ -20,6 +20,7 @@
                         
                 if (cookie != null) { 
                     // il y a un cookie
+                    
                     Cookie cookieSession = cookie[0];
                     String str = "Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}";
                     %>
@@ -29,7 +30,7 @@
                 else { 
                     // pas de cookie
                     %>
-                    <form action="/TP-Rochet-Vivier/ServletTP4" method="post">
+                    <form action="../ServletTP4" method="post">
                         Username : <input type="text" name="username" />
                         <br />Password : <input type="password" name="password" />
                         <br /><input type="submit" value="Authenticate" />

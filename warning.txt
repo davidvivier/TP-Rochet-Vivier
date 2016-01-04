@@ -1,0 +1,11 @@
+
+Liste des choses a faire attention et des erreurs a ne pas commettre
+
+utiliser uniquement des chemins relatifs
+fichiers .css dans un repertoire specifique
+uniquement fichier index.html a la racine, rien d'autre.
+enlever les commentaires generes par netbeans dans les classes java et les jsp.
+faire les imports automatiquement (un par ligne)
+tp4 : methodes statiques de User pour moins de code ailleurs
+balise <label> pour chaque <input>
+nommage package

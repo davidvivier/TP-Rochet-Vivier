@@ -6,32 +6,24 @@
 <%@page import="java.util.Random"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="tp3.User"%>
+<%@page import="tp.rochetvivier.modele.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="table.css">
+        <link rel="stylesheet" type="text/css" href="../style/table.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Affichage d'une liste d'utilisateurs</title>
     </head>
     <body>
         <h1>Liste des Utilisateurs</h1>
         
-        
-        <!-- On crée et on stocke les utilisateurs dans une ArrayList-->
-        <% List<User> users; %>
-        <%
-            users = new ArrayList<>();
-            users.add(new User("David", "Vivier", 20, "dv"));
-            users.add(new User("Valentin", "Rochet", 18, "vr"));
-            users.add(new User("Christophe", "Jaloux", 25, "cj"));
-         %>
          
          <!-- Première partie : On affiche les utilisateurs dans un tableau. Celui-ci est formaté dans style.css -->
          <table>
              <tr><th>Pr&eacute;nom</th><th>Nom</th><th>&Acirc;ge</th><th>Mot de passe</th></tr>
          <%
+             List<User> users = User.getListUser();
              for (User u : users) {
                  %><tr><td><%= u.getFirstName()%></td>
                      <td><%=u.getLastName()%></td>
@@ -46,12 +38,7 @@
          
          <!-- Deuxième partie : Affichage d'un utilisateur tiré au hasard -->
          
-         <% 
-            // on tire un nombre au hasard, inférieur strictement au nombre d'utilisateurs
-            Random rand;
-            rand = new Random();
-            int index = rand.nextInt(users.size());
-            User u = users.get(index);%>
+         <% User u = User.getRandomUser();%>
          Utilisateur au hasard : 
          <ul>
              <li>Pr&eacute;nom : <%=u.getFirstName()%></li>
