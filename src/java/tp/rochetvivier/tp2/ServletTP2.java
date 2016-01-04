@@ -83,7 +83,7 @@ public class ServletTP2 extends HttpServlet {
             out.println("   <li>Renseigner plusieurs fois le m&ecirc;me param&egrave;tre (param3) ");
             out.println("</ul>");
             out.print("<br />");
-            out.print("<br /><a href=\"/TP-Rochet-Vivier\">Retour &agrave; l'index</a>");
+            out.print("<br /><a href=\"index.html\">Retour &agrave; l'index</a>");
             out.println("</body>");
             out.println("</html>");
         }

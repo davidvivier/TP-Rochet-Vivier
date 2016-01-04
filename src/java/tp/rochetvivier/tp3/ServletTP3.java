@@ -117,11 +117,12 @@ public class ServletTP3 extends HttpServlet {
                 out.println("<br />Bien &eacute;videmment, les mots de passe affich&eacute;s en dessous du formulaire d'authentification sont &eacute;crits dans un but de test uniquement." );
                 
                 out.println("<br />");
-                out.print("<br /><a href=\"/TP-Rochet-Vivier\">Retour &agrave; l'index</a>");
+                out.print("<br /><a href=\"index.html\">Retour &agrave; l'index</a>");
                 out.println("</div>");
                 
                 out.println("</body>");
                 out.println("</html>");
+                
                 
             }
     }

@@ -59,6 +59,6 @@
          
          <br />
          <br /> 
-         <br /><a href="/TP-Rochet-Vivier">Retour &agrave; l'index</a>
+         <br /><a href="../index.html">Retour &agrave; l'index</a>
     </body>
 </html>

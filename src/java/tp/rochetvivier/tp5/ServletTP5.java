@@ -95,7 +95,15 @@ public class ServletTP5 extends HttpServlet {
         String passwordRequested = request.getParameter("password");
         
         try (PrintWriter out = response.getWriter()) {
-        
+            
+                out.write("<!DOCTYPE html>" +
+                            "<html>\n" +
+                            "    <head>\n" +
+                            "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
+                            "        <title>Authentication</title>\n" +
+                            "    </head>\n" +
+                            "    <body>");
+            
                 User user = m_users.get(userNameRequested);
                 if (userNameRequested.equals("")) {
                     out.write("<h2>Authentication Failure</h2>");
@@ -110,18 +118,11 @@ public class ServletTP5 extends HttpServlet {
                     if (user.getPassword().equals(passwordRequested)) {
                         // passwords does match
                         
-                        Cookie cokkie[] = request.getCookies();
+                        Cookie cookie = new Cookie("session", user.getUsername());
+                        cookie.setMaxAge(60);
+                        response.addCookie(cookie);
                         
-                        if (cokkie == null) { 
-                            // il n'y avait pas de cookie
-                            Cookie cookieSession = new Cookie("session", user.getUsername());
-                            response.addCookie(cookieSession);
-                        }
-                        else {
-                            Cookie cookieSession = cokkie[0];
-                            out.println("Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}");
-                        }
-                        out.println("<h2>Welcome back, " + user.getFirstName() + ".</h2>");
+                        out.println("<h2>Welcome, " + user.getFirstName() + ".</h2>");
                         out.println("<ul>");
                         out.println("   <li>Username : " + user.getUsername() + "</li>");
                         out.println("   <li>Password : " + user.getPassword() + "</li>");
@@ -130,6 +131,7 @@ public class ServletTP5 extends HttpServlet {
                         out.println("   <li>Age : " + user.getAge() + "</li>");
                         out.println("</ul>");
                         
+                        out.println("<br /> Vous serez automatiquement d&eacute;connect&eacute; dans 60 secondes.");
                     }
                     else {
                         // passwords does not match
@@ -139,10 +141,11 @@ public class ServletTP5 extends HttpServlet {
                     
                 }
                     
-                out.println("<form action=\"/TP-Rochet-Vivier/tp5/auth.html\" > ");
+                out.println("<form action=\"/TP-Rochet-Vivier/tp5/auth.jsp\" > ");
                 out.println("   <input type =\"submit\" value=\"Back\">");
                 out.println("</form>");
                 out.println("</div>");
+                out.println("</html>");
         }
     }
 
