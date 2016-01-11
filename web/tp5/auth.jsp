@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Authentification</title>
+        <title>Authentification - TP 5</title>
     </head>
     <body>
         <div>

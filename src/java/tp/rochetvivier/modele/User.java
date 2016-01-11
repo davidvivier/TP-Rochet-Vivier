@@ -23,7 +23,7 @@ public class User {
         users.put(user.getUsername(), user);
         user = new User("valentin.rochet", "vr", "Valentin", "Rochet", 18);
         users.put(user.getUsername(), user);
-        user = new User("Christophe", "Jaloux", 25, "cj");
+        user = new User("christophe.jaloux",  "cj", "Christophe", "Jaloux", 25);
         users.put(user.getUsername(), user);
     }
     
