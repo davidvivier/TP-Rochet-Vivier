@@ -5,7 +5,8 @@ utiliser uniquement des chemins relatifs
 fichiers .css dans un repertoire specifique
 uniquement fichier index.html a la racine, rien d'autre.
 enlever les commentaires generes par netbeans dans les classes java et les jsp.
-faire les imports automatiquement (un par ligne)
-tp4 : methodes statiques de User pour moins de code ailleurs
+dans les jsp faire les imports automatiquement (un par ligne)
+tp4 : methodes statiques dans la classe User pour moins de code ailleurs
 balise <label> pour chaque <input>
-nommage package
+attention au nommage des packages, pas seulement "tp4"
+
