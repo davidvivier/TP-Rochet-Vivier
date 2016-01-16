@@ -42,6 +42,16 @@
                         <br />Password : <input type="password" name="password" />
                         <br /><input type="submit" value="Authenticate" />
                     </form>
+        </div>
+        <hr />
+        <div>
+            <br />Identifiants pour les tests :
+            <ul>
+                <li>username : "david.vivier" password : "dv"</li>
+                <li>username : "valentin.rochet" password : "vr"</li>
+            </ul>
+            <br /><a href="../index.html">Retour &agrave; l'index</a>
+        </div>
                     <% 
                 }
                 else {
@@ -63,13 +73,22 @@
         </div>
         <hr>
         <div>
-            <% String str = "Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}";%>
+            <h1>TP 5</h1>
+            Ce TP permet de comprendre le fonctionnement des cookies.
+            <br />Nous avons tous d&eacute;j&agrave; entendu parler des cookies, nous savons maintenant exactement ce que c'est et comment on les utilise.
+            <br />Pour supprimer un cookie, on peut lui attribuer une durée de vie courte  ou le supprimer manuellement en passant par les paramètres du navigateur.
+            <br />
+            <br />Cookie actuel
+            <br />
+            <% 
+            // on affiche les informations du cookie
+            String str = "Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}";%>
             connect&eacute; - <%=str %> 
-
-            Cookie dans le navigateur :
+            
+            Visualisation du cookie dans le navigateur :
             <br />
-            <br />
-            <img src="cookie.png" alt="cookie \"session\" dans le navigateur">
+            <br /> <!-- capture d'écran montrant le cookie dans les paramètres du navigateur -->
+            <img src="../ressources/cookie.png" alt="cookie \"session\" dans le navigateur">
             <br />
             <br /><a href="../index.html">Retour &agrave; l'index</a>
             <% }  %>

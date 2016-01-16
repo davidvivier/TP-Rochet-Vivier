@@ -32,21 +32,32 @@
                             cookieSession = c;
                         }
                     }
-                } %>
+                } 
+            
+                boolean sessionExiste = false;
+                
+                if (session.getAttribute("USER_VALUE") != null) {
+                    sessionExiste = true;
+                }
+            
+            
+            %>
                 <%
                 if (cookieSession == null) {
                     //  notre cookie n'existe pas
 
-                    if (session == null) {
+                    if (!sessionExiste) {
                         // pas de session
                         // Cas n°1 : pas de cookie et pas de session
             %>
+                        
                         <h1>Authentication needed</h1>
                         <form action="../ServletTP6" method="post">
                             Username : <input type="text" name="username" />
                             <br />Password : <input type="password" name="password" />
                             <br /><input type="submit" value="Authenticate" />
                         </form>
+                        <br />Cookie n'existe pas, session n'existe pas 
                         <%
                         } else {
                             // il y a une session
@@ -55,13 +66,14 @@
                             // affichage des infos de la session
                             User user = (User) session.getAttribute("USER_VALUE");
                             if (user != null)
-                                str = "Session  { id=" + session.getId() + "" + user.toString() + "}";
+                                str = "Session  { id=" + session.getId() + ", user = " + user.toString() + "}";
+                            
                         %> 
-                        <br />
-                            <%=str %>
+                        <br />Cookie n'existe pas, session existe
+                        <br /> <%=str %>
                     <%    }
-                } else // notre cookie existe
-                    if (session == null) {
+                } else {// notre cookie existe
+                    if (!sessionExiste) {
 
                     // Pas de session
                     // Cas n°2 : cookie et pas de session
@@ -76,38 +88,48 @@
                     <li>Age : <%=user.getAge()%> </li>
                 </ul> 
                 <br />
-                // affichage des infos du cookie
+                 
                 <%  str = "Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}";
-                %>  <%=str %> 
+                %>  Cookie existe, session n'existe pas
+                    <br /><%=str %> 
                 <%  } else {
                     // La session existe
                     // Cas n°4 : cookies et session
 
                     // affichage des infos du cookie
                     str = "Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}";
-                    %><br />  <%=str %> 
+                    %><br /> Cookie et session existent
+                      <br /><%=str %> 
                     <%
                     // affichage des infos de la session
                     User user = (User) session.getAttribute("USER_VALUE");
                     str = "Session  { id=" + session.getId() + " user : " + user.toString() + "}";
-                    %> <br /> <%=str %>
-
-            } %>
+                    %> <br /> <%=str %> 
+                <% }  %>
+            <% }%>
 
 
         </div>
+                    
         <hr>
         <div>
-            <%  str = "Cookie { domain='" + cookieSession.getDomain() + "', name='" + cookieSession.getName() + "', path='" + cookieSession.getPath() + " ', value='" + cookieSession.getValue() + "'}";%>
-            connect&eacute; - <%=str%> 
-
-            Cookie dans le navigateur :
+            <div>
+                <br />Identifiants pour les tests :
+                <ul>
+                    <li>username : "david.vivier" password : "dv"</li>
+                    <li>username : "valentin.rochet" password : "vr"</li>
+                </ul>
+            </div>
+            <h2>TP 6</h2>
+            Ce TP est utile pour comprendre comment fonctionnent les sessions, (les cookies sont déjà vus au TP 5), et la différence entre cookie et session.
             <br />
+            <br />La distinction des 4 cas (cookie existant ou non / session existant ou non) permet de mieux saisir la différence.
+            <br />Il faut aussi garder à l'esprit que c'est le cookie JSESSIONID qui fait le lien entre la session de la servlet et la machine de l'utilisateur.
             <br />
-            <img src="cookie.png" alt="cookie \"session\" dans le navigateur">
-            <br />
+            
             <br /><a href="../index.html">Retour &agrave; l'index</a>
-            <% }%>
+            
         </div>
     </body>
 </html>
+

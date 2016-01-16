@@ -8,12 +8,14 @@ package tp.rochetvivier.tp6;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import tp.rochetvivier.modele.User;
 
 /**
@@ -75,7 +77,8 @@ public class ServletTP6 extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * 
+     * Récupère une requête POST
      *
      * @param request servlet request
      * @param response servlet response
@@ -91,7 +94,7 @@ public class ServletTP6 extends HttpServlet {
         String passwordRequested = request.getParameter("password");
         
         try (PrintWriter out = response.getWriter()) {
-            
+                
                 out.write("<!DOCTYPE html>" +
                             "<html>\n" +
                             "    <head>\n" +
@@ -100,7 +103,7 @@ public class ServletTP6 extends HttpServlet {
                             "    </head>\n" +
                             "    <body>");
             
-                User user = m_users.get(userNameRequested);
+                User user = User.getUser(userNameRequested);
                 if (userNameRequested.equals("")) {
                     out.write("<h2>Authentication Failure</h2>");
                     out.write("Please provide a username and password to login.");
@@ -117,6 +120,10 @@ public class ServletTP6 extends HttpServlet {
                         Cookie cookie = new Cookie("session", user.getUsername());
                         cookie.setMaxAge(60);
                         response.addCookie(cookie);
+                        
+                        
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("USER_VALUE", user);
                         
                         out.println("<h2>Welcome, " + user.getFirstName() + ".</h2>");
                         out.println("<ul>");
@@ -137,7 +144,7 @@ public class ServletTP6 extends HttpServlet {
                     
                 }
                     
-                out.println("<form action=\"/TP-Rochet-Vivier/tp5/auth.jsp\" > ");
+                out.println("<form action=\"/TP-Rochet-Vivier/tp6/auth.jsp\" > ");
                 out.println("   <input type =\"submit\" value=\"Back\">");
                 out.println("</form>");
                 out.println("</div>");
