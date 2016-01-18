@@ -23,7 +23,7 @@
          <table>
              <tr><th>Pr&eacute;nom</th><th>Nom</th><th>&Acirc;ge</th><th>Mot de passe</th></tr>
          <%
-             List<User> users = User.getListUser();
+             List<User> users = User.getListUsers();
              for (User u : users) {
                  %><tr><td><%= u.getFirstName()%></td>
                      <td><%=u.getLastName()%></td>
@@ -55,9 +55,10 @@
          <br />
          <br />Cela est un peu perturbant car sur une m&ecirc;me ligne on retrouve une alternance entre du Java et du HTML intercal&eacute;s.
          
-         <br />Construire la page de cette mani&egrave;re ressemble un peu au PHP, que l'on peut inclut avec la balise &lt;?php ... ?&gt; dans du code HTML.
-         
+         <br />Construire la page de cette mani&egrave;re ressemble un peu au PHP, que l'on peut inclure dans du code HTML avec la balise &lt;?php ... ?&gt;.
          <br />
+         <br />Dans ce TP o&ugrave; l'on doit prendre un utilisateur au hasard, on utilise une m&eacute;thode statique dans la classe User qui va prendre un nombre au hasard puis choisir l'utilsateur correspondant,
+         <br /> parmi les utilisateurs stockés en statique dans la classe User.
          <br /> 
          <br /><a href="../index.html">Retour &agrave; l'index</a>
     </body>

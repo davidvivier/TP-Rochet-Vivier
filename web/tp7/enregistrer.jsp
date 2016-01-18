@@ -19,7 +19,10 @@
             <!-- On crée un formulaire qu'on envoie à "lire.jsp" -->
             <label for="name">Name : </label><input type="text" name="name" />
             <br /><label for="surname">Surname : </label><input type="text" name="surname" />
+            <br /><label for="age">Age : </label><input type="number" name="age" />
+            <br /><label for="preference">Preference : </label><input type="text" name="preference" />
             <br /><input type="submit" value="Register" />
         </form>
+        <br /><a href="../index.html">Retour &agrave; l'index</a>
     </body>
 </html>

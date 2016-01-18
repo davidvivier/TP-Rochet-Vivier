@@ -23,17 +23,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletTP3", urlPatterns = {"/ServletTP3"})
 public class ServletTP3 extends HttpServlet {
     
-    private HashMap<String, User> m_users;
+    //private HashMap<String, User> m_users;
     
     
     public ServletTP3() {
-        
+        /*
         m_users = new HashMap<>();
         User user = new User("david.vivier", "dv", "David", "Vivier", 20);
         m_users.put(user.getUsername(), user);
         user = new User("valentin.rochet", "vr", "Valentin", "Rochet", 18);
         m_users.put(user.getUsername(), user);
-        
+        */
     }
     
     
@@ -41,12 +41,10 @@ public class ServletTP3 extends HttpServlet {
     
     
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Récupère une requête utilisant la méthode POST
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request la requête reçue
+     * @param response la réponse qui sera renvoyée
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -66,7 +64,7 @@ public class ServletTP3 extends HttpServlet {
                 out.println("<body>");
                 out.println("<div>");
                 
-                User user = m_users.get(userNameRequested);
+                User user = User.getUser(userNameRequested);
                 if (userNameRequested.equals("")) {
                     out.write("<h2>Authentication Failure</h2>");
                     out.write("Please provide a username and password to login.");
@@ -127,14 +125,5 @@ public class ServletTP3 extends HttpServlet {
             }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

@@ -24,19 +24,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletTP2", urlPatterns = {"/ServletTP2"})
 public class ServletTP2 extends HttpServlet {
 
+   
+    
+
+    
     /**
-     * 
+     * Récupère une requête utilisant la méthode GET
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request la requête reçue
+     * @param response la réponse qui sera renvoyée
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -76,6 +78,7 @@ public class ServletTP2 extends HttpServlet {
             out.println("<h4>TP2 :</h4>");
             out.println("Le TP 2 concerne uniquement la m&eacute;thode GET, il n'utilise pas de requ&ecirc;te POST.");
             out.println("<br />Par cons&eacute;quent on peut retirer la m&eacute;thode doPost() pr&eacute;sente par d&eacute;faut dans la classe Servlet.");
+            out.println("<br />De plus dans ce TP et les suivants on peut retirer la m&eacute;thode getServletInfo() car nous ne l'utilisons pas, ainsi que la m&eacute;thode processRequest(), car on utilise soit POST, soit GET.");
             out.println("<br />");
             out.println("<br />Pour passer plusieurs valeurs pour un m&ecirc;me param&egrave;tre d'une m&eacute;thode GET, il y a deux solutions:");
             out.println("<ul>");
@@ -89,47 +92,6 @@ public class ServletTP2 extends HttpServlet {
         }
        
     }
-    
-    
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-        
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

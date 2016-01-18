@@ -15,8 +15,14 @@ import java.util.Random;
  */
 public class User {
     
+    
+    /** on stocke la liste des utilisateurs directement en statique dans la classe User.
+     */
     public static HashMap<String, User> users;
     
+    /** On initialise la liste des utilisateurs.
+     * Comme cet attribut est statique, on l'initialise dans le bloc statique.
+     */
     static {
         users = new HashMap<>();
         User user = new User("david.vivier", "dv", "David", "Vivier", 20);
@@ -33,14 +39,6 @@ public class User {
         m_lastName = lastName;
         m_firstName = firstName;
         m_age = age;
-    }
-    
-    public User(String firstName, String lastName, int age, String password) {
-        m_username = "";
-        m_lastName = lastName;
-        m_firstName = firstName;
-        m_age = age;
-        m_password = password;
     }
     
     
@@ -67,9 +65,9 @@ public class User {
     }
 
     /**
-     * Returns the user objets matching the given username.
+     * Retourne l'User correspondant au nom d'utilisateur fourni.
      * @param username 
-     * @return null if no user exists with this username
+     * @return l'objet User, null si aucun utilisateur n'a ce nom d'utilisateur
      */
     public static User getUser(String username) {
         if (users.containsKey(username))
@@ -77,10 +75,18 @@ public class User {
         return null;
     }
     
-    public static List<User> getListUser() {
+    /** Retourne une liste des utilisateurs stockés
+     * 
+     * @return liste d'objets User
+     */
+    public static List<User> getListUsers() {
         return new ArrayList<>(users.values());
     }
     
+    /**
+     * Retourne un utilisateur au hasard parmi ceux stockés en statique dans la classe
+     * @return objet User au hasard
+     */
     public static User getRandomUser() {
         // on tire un nombre au hasard, inférieur strictement au nombre d'utilisateurs
         Random rand;

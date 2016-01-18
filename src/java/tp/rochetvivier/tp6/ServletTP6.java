@@ -25,65 +25,14 @@ import tp.rochetvivier.modele.User;
 @WebServlet(name = "ServletTP6", urlPatterns = {"/ServletTP6"})
 public class ServletTP6 extends HttpServlet {
 
-    private HashMap<String, User> m_users;
     
-    public ServletTP6 () {
-        m_users = new HashMap<>();
-        User user = new User("david.vivier", "dv", "David", "Vivier", 20);
-        m_users.put(user.getUsername(), user);
-        user = new User("valentin.rochet", "vr", "Valentin", "Rochet", 18);
-        m_users.put(user.getUsername(), user);
-    }
     
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletTP6</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletTP6 at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
     /**
-     * 
-     * Récupère une requête POST
+     * Récupère une requête utilisant la méthode POST
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request la requête reçue
+     * @param response la réponse qui sera renvoyée
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -153,14 +102,5 @@ public class ServletTP6 extends HttpServlet {
         
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

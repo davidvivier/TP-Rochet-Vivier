@@ -23,7 +23,8 @@
         <!-- On met à jour les valeurs de la bean en fonction des valeurs retournées du formulaire -->
         <jsp:setProperty name="myUser" property="name" />
         <jsp:setProperty name="myUser" property="surname" />
-        
+        <jsp:setProperty name="myUser" property="age" />
+        <jsp:setProperty name="myUser" property="preference" />
         
      </head>
     <body>
@@ -41,7 +42,7 @@
         <hr />
         <div>
             Erreur rencontrée : nous avions d'abord instancié la bean dans "register.jsp",
-            en pensant que la page "lire.jsp" pourrait récupérer la bean. Cela ne marche pas.
+            en pensant que la page "lire.jsp" pourrait récupérer la bean. Cela ne fonctionne pas.
             <br/><br/>
             Remarque : si le formulaire est vide, les valeurs affichées pour "name" et "surname" sont les dernières
             valeurs rentrées de la session, et non valeur nulle.
